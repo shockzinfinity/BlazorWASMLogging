@@ -1,0 +1,18 @@
+﻿@page "/"
+@using Microsoft.Extensions.Logging
+@inject ILogger<Index> Logger
+
+<PageTitle>Index</PageTitle>
+
+<button @onclick="CreateLogs">Create Log</button>
+
+@code {
+  private void CreateLogs()
+  {
+    var logLevels = Enum.GetValues(typeof(LogLevel)).Cast<LogLevel>();
+
+    foreach (var logLevel in logLevels.Where(l => l != LogLevel.None)) {
+      Logger.Log(logLevel, logLevel.ToString());
+    }
+  }
+}
