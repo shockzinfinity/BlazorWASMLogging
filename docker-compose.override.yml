@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  blazorwasmserilog.server:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ./logs:/app/logs
+    ports:
+      - "80"
